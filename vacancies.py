@@ -125,9 +125,9 @@ def parse_hh(html):
 
 def src_hh(cfg):
     area, out = hh_area(cfg), []
-    for page in range(5):
+    for page in range(12):
         r = get("https://hh.ru/search/vacancy", params={"area": area, "experience": "noExperience", "text": "",
-                "order_by": "publication_time", "search_period": 3, "items_on_page": 50, "page": page})
+                "order_by": "publication_time", "search_period": 30, "items_on_page": 50, "page": page})
         items = parse_hh(r.text)
         if not items:
             if page == 0: raise RuntimeError("hh.ru: страница без вакансий (изменилась разметка или нет вакансий)")
