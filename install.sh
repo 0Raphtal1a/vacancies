@@ -140,6 +140,75 @@ def src_hh(cfg):
         time.sleep(2)
     return out
 
+def _clean(x):
+    return re.sub(r"\s+", " ", (x or "").replace("\xa0", " ").replace("\u2009", " ")).strip()
+
+def src_zarplata(cfg):
+    out, host = [], "https://%s.zarplata.ru" % cfg.get("ZARPLATA_SLUG", cfg["AVITO_SLUG"])
+    for page in range(12):
+        r = get(host + "/search/vacancy", params={"text": "", "experience": "noExperience",
+                "order_by": "publication_time", "search_period": 30, "items_on_page": 50, "page": page})
+        items = parse_hh(r.text)
+        if not items:
+            if page == 0: raise RuntimeError("zarplata.ru: страница без вакансий")
+            break
+        for it in items:
+            m = re.search(r"/vacancy/(\d+)", it["url"])
+            if m: it["key"] = "https://hh.ru/vacancy/" + m.group(1)
+            it["src"] = "zarplata.ru"
+        out += items
+        time.sleep(2)
+    return out
+
+def src_superjob(cfg):
+    host = "https://%s.superjob.ru" % cfg.get("SUPERJOB_SLUG", cfg["AVITO_SLUG"])
+    out, seen_u = [], set()
+    pat = re.compile(r"^https://[a-z0-9-]+\.superjob\.ru/vakansii/[^/?#]*-\d{5,}\.html")
+    for page in range(1, 9):
+        r = get(host + "/vakansii/bez-opyta.html", params={"page": page} if page > 1 else None)
+        soup = BeautifulSoup(r.text, "html.parser")
+        n_new = 0
+        for a in soup.find_all("a", href=True):
+            href = a["href"].split("?")[0]
+            if not pat.match(href) or not href.startswith(host) or href in seen_u: continue
+            title = _clean(a.get_text(" ", strip=True))
+            if not title: continue
+            seen_u.add(href); n_new += 1
+            card, sal = a, ""
+            for _ in range(6):
+                if card.parent is None: break
+                card = card.parent
+                el = card.select_one(".f-test-text-company-item-salary")
+                if el: sal = _clean(el.get_text(" ", strip=True)); break
+            out.append({"title": title, "salary": sal.replace("/месяц", "").strip(), "phone": "", "url": href,
+                        "text": _clean(card.get_text(" ", strip=True))[:400], "src": "SuperJob"})
+        if n_new == 0:
+            if page == 1: raise RuntimeError("SuperJob: вакансий не найдено (изменилась разметка)")
+            break
+        time.sleep(2)
+    return out
+
+def src_rabota(cfg):
+    host = "https://%s.rabota.ru" % cfg.get("RABOTA_SLUG", cfg["AVITO_SLUG"])
+    out, seen_u = [], set()
+    for page in range(1, 9):
+        r = get(host + "/vacancy/", params={"experience": 0, "page": page})
+        soup = BeautifulSoup(r.text, "html.parser")
+        n_new = 0
+        for a in soup.select("a.vacancy-preview-card__title_border"):
+            href = host + re.sub(r"[?#].*$", "", a.get("href", ""))
+            if href in seen_u: continue
+            seen_u.add(href); n_new += 1
+            card = a.find_parent(class_="vacancy-preview-card") or a.parent
+            sal = card.select_one(".vacancy-preview-card__salary") if card else None
+            out.append({"title": _clean(a.get_text(" ", strip=True)), "salary": _clean(sal.get_text(" ", strip=True)) if sal else "",
+                        "phone": "", "url": href, "text": _clean(card.get_text(" ", strip=True))[:400] if card else "", "src": "Rabota.ru"})
+        if n_new == 0:
+            if page == 1: raise RuntimeError("Rabota.ru: вакансий не найдено (изменилась разметка)")
+            break
+        time.sleep(2)
+    return out
+
 def src_avito(cfg):
     r = get("https://www.avito.ru/%s/vakansii" % cfg["AVITO_SLUG"], params={"s": 104})
     soup = BeautifulSoup(r.text, "html.parser")
@@ -186,7 +255,7 @@ def main():
     today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).date()
     seen = {k: d for k, d in seen.items() if (today - datetime.date.fromisoformat(d)).days < 90}
     status, items = [], []
-    for name, fn in (("hh.ru", src_hh), ("Работа России", src_trudvsem), ("Avito", src_avito)):
+    for name, fn in (("hh.ru", src_hh), ("Работа России", src_trudvsem), ("zarplata.ru", src_zarplata), ("SuperJob", src_superjob), ("Rabota.ru", src_rabota), ("Avito", src_avito)):
         try:
             got = fn(cfg); items += got; status.append("%s: OK (%d)" % (name, len(got)))
         except Blocked as e:
@@ -195,7 +264,7 @@ def main():
             status.append("%s: ошибка, пропущен" % name); log.exception("%s", name)
     new, keys = [], set()
     for it in items:
-        k = it["url"] or it["title"]
+        k = it.get("key") or it["url"] or it["title"]
         if k in seen or k in keys or not keep(it, cfg): continue
         keys.add(k); new.append(it)
     ok = sum(1 for s in status if ": OK" in s)
