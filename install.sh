@@ -145,14 +145,17 @@ def _clean(x):
 
 def src_zarplata(cfg):
     out, host = [], "https://%s.zarplata.ru" % cfg.get("ZARPLATA_SLUG", cfg["AVITO_SLUG"])
+    try: area = hh_area(cfg)
+    except Exception: area = ""
     for page in range(12):
-        r = get(host + "/search/vacancy", params={"text": "", "experience": "noExperience",
+        r = get(host + "/search/vacancy", params={"text": "", "area": area, "experience": "noExperience",
                 "order_by": "publication_time", "search_period": 30, "items_on_page": 50, "page": page})
         items = parse_hh(r.text)
         if not items:
             if page == 0: raise RuntimeError("zarplata.ru: страница без вакансий")
             break
         for it in items:
+            if cfg["CITY"].lower() not in it["text"].lower(): continue
             m = re.search(r"/vacancy/(\d+)", it["url"])
             if m: it["key"] = "https://hh.ru/vacancy/" + m.group(1)
             it["src"] = "zarplata.ru"
@@ -255,7 +258,7 @@ def main():
     today = datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=3))).date()
     seen = {k: d for k, d in seen.items() if (today - datetime.date.fromisoformat(d)).days < 90}
     status, items = [], []
-    for name, fn in (("hh.ru", src_hh), ("Работа России", src_trudvsem), ("zarplata.ru", src_zarplata), ("SuperJob", src_superjob), ("Rabota.ru", src_rabota), ("Avito", src_avito)):
+    for name, fn in (("hh.ru", src_hh), ("Работа России", src_trudvsem), ("zarplata.ru", src_zarplata), ("SuperJob", src_superjob), ("Avito", src_avito)):
         try:
             got = fn(cfg); items += got; status.append("%s: OK (%d)" % (name, len(got)))
         except Blocked as e:
