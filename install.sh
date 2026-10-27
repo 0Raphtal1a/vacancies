@@ -199,7 +199,7 @@ if __name__ == "__main__":
         log.exception("fatal"); print("ОШИБКА:", e, file=sys.stderr); sys.exit(1)
 PYEOF
 [ -f config.env ] || cat > config.env << 'EOF'
-# Токен GitHub с правом записи в репозиторий TEST (впишите командой из инструкции)
+# Токен GitHub с правом записи в репозиторий vacancies (впишите командой из инструкции)
 GITHUB_TOKEN=
 GH_REPO=0Raphtal1a/vacancies
 # Необязательно: код города на hh.ru, если скрипт не найдёт его сам
