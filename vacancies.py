@@ -42,6 +42,10 @@ def get(url, **kw):
 
 # ---------- фильтры ----------
 BAD_TITLE = re.compile(r"продав|курьер|вахт", re.I)
+# мужские профессии
+MALE_TITLE = re.compile(r"электрик|электромонт|электромон|монтер|монтёр|сантехник|слесар|механик|сварщик|монтажник|тракторист|(?<![а-я])водител|грузчик|строител|каменщик|плотник|столяр|токар|фрезеров|кровельщик|разнорабоч|подсобн\w*\s+рабоч|охранник|полицейск|участков\w*\s+уполномоч|оперативн\w*\s+дежурн|наладчик|машинист|крановщик|бетонщик|арматурщик|такелажник|шиномонтаж|кузовн|газосварщик|ремонтник|дорожн\w*\s+рабоч|тракторн|экскаваторщик|бульдозерист", re.I)
+# нужны водительские права
+LICENSE_TEXT = re.compile(r"(?<![а-я])водител|водительск|прав[аоы]?\s+категори|наличие\s+прав|категори[июя]\s+[ABCDEАВСЕ]\b|права\s+[ABCDEАВСЕ]\b", re.I)
 BAD_TEXT = re.compile(r"вахт|высше[еойм]|опыт\w*\s+(?:работы\s+)?(?:от|не менее|обязателен|\d)|стаж\s+(?:от|\d)", re.I)
 
 def salary_numbers(s):
@@ -52,6 +56,8 @@ def keep(item, cfg):
     title = item["title"]
     text = item.get("text", "")
     if BAD_TITLE.search(title) or BAD_TEXT.search(title + " " + text):
+        return False
+    if MALE_TITLE.search(title) or LICENSE_TEXT.search(title + " " + text):
         return False
     nums = salary_numbers(item.get("salary", ""))
     if nums and max(nums) > int(cfg["MAX_SALARY"]):
