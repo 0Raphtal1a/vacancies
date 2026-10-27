@@ -29,8 +29,16 @@ def load_cfg():
 class Blocked(Exception):
     pass
 
+def retry(fn, tries=4, pause=15):
+    for n in range(tries):
+        try:
+            return fn()
+        except requests.exceptions.ConnectionError:
+            if n == tries - 1: raise
+            time.sleep(pause)
+
 def get(url, **kw):
-    r = requests.get(url, headers=UA, timeout=20, **kw)
+    r = retry(lambda: requests.get(url, headers=UA, timeout=20, **kw), tries=2, pause=5)
     if r.status_code in (403, 429) or "captcha" in r.text[:5000].lower() or "Доступ ограничен" in r.text[:5000]:
         raise Blocked("%s: HTTP %s / защита от роботов" % (url.split("/")[2], r.status_code))
     r.raise_for_status()
@@ -153,13 +161,13 @@ def publish(cfg, text, path="digest/latest.txt"):
     if not tok: raise RuntimeError("В config.env не заполнено GITHUB_TOKEN")
     h = {"Authorization": "Bearer " + tok, "Accept": "application/vnd.github+json", "User-Agent": "vacancies-digest"}
     url = "https://api.github.com/repos/%s/contents/%s" % (repo, path)
-    g = requests.get(url, headers=h, params={"ref": "main"}, timeout=30)
+    g = retry(lambda: requests.get(url, headers=h, params={"ref": "main"}, timeout=30))
     if g.status_code not in (200, 404):
         raise RuntimeError("GitHub HTTP %s: %s" % (g.status_code, g.text[:300]))
     body = {"message": "digest", "branch": "main",
             "content": base64.b64encode(text.encode("utf-8")).decode()}
     if g.status_code == 200: body["sha"] = g.json().get("sha")
-    p = requests.put(url, headers=h, json=body, timeout=30)
+    p = retry(lambda: requests.put(url, headers=h, json=body, timeout=30))
     if p.status_code >= 300:
         raise RuntimeError("GitHub HTTP %s: %s" % (p.status_code, p.text[:300]))
 
