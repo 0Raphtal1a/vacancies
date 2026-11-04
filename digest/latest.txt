@@ -1,134 +1,17 @@
-DATE: 2026-11-03
-COUNT: 31
-STATUS: hh.ru: OK (39); Работа России: OK (22); zarplata.ru: OK (15); SuperJob: OK (13); Avito: OK (50)
+DATE: 2026-11-04
+COUNT: 3
+STATUS: hh.ru: OK (39); Работа России: OK (12); zarplata.ru: OK (16); SuperJob: OK (13); Avito: заблокирован, пропущен
 ---
-Менеджер по работе с клиентами/специалист МФЦ
+Начальник участка/смены
 Зарплата: не указана
-Ссылка: https://hh.ru/vacancy/139071051
+Ссылка: https://hh.ru/vacancy/139097646
 
-Менеджер по обработке заявок
-Зарплата: не указана
-Ссылка: https://hh.ru/vacancy/138812460
+Оператор СК и МФ
+Зарплата: от 65000 до 65000 руб.
+Номер для связи: +7(915) 690-13-42
+Ссылка: https://trudvsem.ru/vacancy/card/1137154027702/6c47ed08-aa98-11f1-86d3-9d322d9153e2
 
-Менеджер по работе с клиентами
-Зарплата: не указана
-Ссылка: https://hh.ru/vacancy/138805249
-
-Старший кассир в Гипермаркет (Ефремов, Тульское шоссе, 4б)
-Зарплата: не указана
-Ссылка: https://hh.ru/vacancy/137449600
-
-Администратор магазина (Ефремов, Красная Площадь, 2)
-Зарплата: от 59100 до 87600 руб.
-Номер для связи: 7 800 7006303
-Ссылка: https://trudvsem.ru/vacancy/card/7226c750-02f1-11eb-8600-bfd13399602c/3699e804-d6a5-11f1-8975-0988f6b99d6f
-
-Приемщик товара в Гипермаркет (Ефремов, Тульское шоссе, 4б)
-Зарплата: от 42300 до 60700 руб.
-Номер для связи: 7 800 2005308
-Ссылка: https://trudvsem.ru/vacancy/card/7226c750-02f1-11eb-8600-bfd13399602c/156192a4-d6a5-11f1-b2ef-ab79fed554e9
-
-Руководитель сектора торгового зала в Гипермаркет (Ефремов, Тульское шоссе, 4б)
-Зарплата: от 59000 до 60500 руб.
-Номер для связи: 7 800 2005308
-Ссылка: https://trudvsem.ru/vacancy/card/7226c750-02f1-11eb-8600-bfd13399602c/f82f0e14-d6a4-11f1-b2ef-ab79fed554e9
-
-Рабочий по комплексному обслуживанию и ремонту зданий
-Зарплата: от 27093 до 27093 руб.
-Номер для связи: +7(487) 416-66-08
-Ссылка: https://trudvsem.ru/vacancy/card/1027102875689/42c98096-c94e-11f1-a5f9-092714e38fda
-
-Дворник
-Зарплата: от 27093 до 27093 руб.
-Номер для связи: +7(487) 416-66-08
-Ссылка: https://trudvsem.ru/vacancy/card/1027102875689/9d1e7d78-9a23-11f1-90f3-3fd3051e9fc6
-
-Кабельщик-спайщик 5 разряда
-Зарплата: от 30095 до 30095 руб.
-Номер для связи: +7(487) 416-00-78
-Ссылка: https://trudvsem.ru/vacancy/card/1027100507136/fab37429-f1d8-11f0-a027-0dd543315e5a
-
-Официант
-Зарплата: от 31000 до 31000 руб.
-Номер для связи: +7(920) 274-50-60
-Ссылка: https://trudvsem.ru/vacancy/card/1027101415153/4d1ed7e8-b9a7-11f1-9a11-2f8460579df4
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8473733514
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8521664585
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8502976177
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8491551096
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8348808257
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8463553007
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8473202857
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8437459951
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8422548676
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8521441742
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8452453960
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8422645857
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8521503816
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8575420794
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8530942879
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8589057054
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8576969321
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8414045520
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8452052851
-
-Оператор в цех сборки Работа без опыта Хорошие условия
-Зарплата: 4 400 — 5 280 ₽
-Ссылка: https://www.avito.ru/efremov/vakansii/operator_v_tseh_sborki_rabota_bez_opyta_horoshie_usloviya_8575105153
+Пекарь
+Зарплата: от 50000 до 59000 руб.
+Номер для связи: +7 495 1832415
+Ссылка: https://trudvsem.ru/vacancy/card/1027700404797/afb06534-d74e-11f1-a15c-471802d8f89e
