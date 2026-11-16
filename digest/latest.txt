@@ -1,5 +1,5 @@
-DATE: 2026-11-15
+DATE: 2026-11-16
 COUNT: 0
-STATUS: hh.ru: OK (38); Работа России: OK (29); zarplata.ru: OK (16); SuperJob: OK (9); Avito: заблокирован, пропущен
+STATUS: hh.ru: OK (38); Работа России: OK (26); zarplata.ru: OK (16); SuperJob: OK (9); Avito: заблокирован, пропущен
 ---
 
