@@ -1,5 +1,7 @@
-DATE: 2026-11-23
-COUNT: 0
-STATUS: hh.ru: OK (39); Работа России: OK (26); zarplata.ru: OK (16); SuperJob: OK (6); Avito: заблокирован, пропущен
+DATE: 2026-11-24
+COUNT: 1
+STATUS: hh.ru: OK (40); Работа России: OK (20); zarplata.ru: OK (18); SuperJob: OK (8); Avito: заблокирован, пропущен
 ---
-
+Старший кассир в Гипермаркет (Ефремов, Тульское шоссе, 4б)
+Зарплата: не указана
+Ссылка: https://hh.ru/vacancy/139729864
